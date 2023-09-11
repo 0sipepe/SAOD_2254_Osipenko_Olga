@@ -49,6 +49,16 @@ namespace task_Stack1
 
 
         }
+        internal T[] Value()
+        {
+            T[] arr = new T[Count];
+            for(int i = 0; i < Count; i++)
+            {
+                arr[i] = data[i];
+            }
+            return arr;
+
+        }
         internal T Peek()
         {
             if (counter != 0)

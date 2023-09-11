@@ -28,10 +28,13 @@ namespace task_Stack1
             }
             else
             {
+                
                 int cap = Convert.ToInt32(textBox1.Text);
                 stac = new MyStack<int>(cap);
+                label2.Text = stac.Capacity.ToString();
                 listBox1.Visible = true;
                 textBox1.Text = "";
+
 
             }
         }
@@ -47,14 +50,22 @@ namespace task_Stack1
                 try
                 {
                     stac.Push(Convert.ToInt32(textBox2.Text));
-                    listBox1.Items.Add("-");
-
-                    for (int i = listBox1.Items.Count - 1; i > 0; i--)
+                    listBox1.Items.Clear();
+                    int[] arr = stac.Value();
+                    Console.WriteLine(arr[0]);
+                    for (int i = arr.Length - 1; i >= 0; i--)
                     {
-                        listBox1.Items[i] = listBox1.Items[i - 1];
+                        listBox1.Items.Add(arr[i]);
                     }
-                    listBox1.Items[0] = stac.Peek();
                     textBox2.Text = "";
+                    //listBox1.Items.Add("-");
+
+                    //for (int i = listBox1.Items.Count - 1; i > 0; i--)
+                    //{
+                    //    listBox1.Items[i] = listBox1.Items[i - 1];
+                    //}
+                    //listBox1.Items[0] = stac.Peek();
+                    //textBox2.Text = "";
 
 
                 }
@@ -70,13 +81,24 @@ namespace task_Stack1
         {
             try
             {
-                textBox3.Text = stac.Pop().ToString();
-                for (int i = 0; i < listBox1.Items.Count - 1; i++)
-                {
-                    listBox1.Items[i] = listBox1.Items[i + 1];
+                
+                
 
+                textBox3.Text = stac.Pop().ToString();
+                listBox1.Items.Clear();
+
+                int[] arr = stac.Value();
+                for (int i = arr.Length - 1; i >= 0; i--)
+                {
+                    listBox1.Items.Add(arr[i]);
                 }
-                listBox1.Items.Remove(listBox1.Items[listBox1.Items.Count - 1]);
+                
+                //for (int i = 0; i < listBox1.Items.Count - 1; i++)
+                //{
+                //    listBox1.Items[i] = listBox1.Items[i + 1];
+
+                //}
+                //listBox1.Items.Remove(listBox1.Items[listBox1.Items.Count - 1]);
             }
             catch (IndexOutOfRangeException)
             {
@@ -84,9 +106,7 @@ namespace task_Stack1
                 MessageBox.Show("stack is empty");
                 
             }
-            
-            
-            
+  
         }
 
         private void button4_Click(object sender, EventArgs e)
