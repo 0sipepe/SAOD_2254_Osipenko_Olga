@@ -20,79 +20,71 @@ namespace task_Stack1
             listBox1.Visible = false;
         }
 
+        private void fillList()
+        {
+            listBox1.Items.Clear();
+
+            int[] arr = stac.Value();
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                listBox1.Items.Add(arr[i]);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            string scap = textBox1.Text;
+            int cap;
+            if (!(int.TryParse(scap, out cap)))
             {
-                MessageBox.Show("enter value - capacity of your stack");
+                return;
             }
-            else
-            {
-                
-                int cap = Convert.ToInt32(textBox1.Text);
-                stac = new MyStack<int>(cap);
-                label2.Text = stac.Capacity.ToString();
-                listBox1.Visible = true;
-                textBox1.Text = "";
 
-
-            }
+            stac = new MyStack<int>(cap);
+            label2.Text = stac.Capacity.ToString();
+            listBox1.Visible = true;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "")
+            string snum = textBox2.Text;
+            int num;
+            Console.WriteLine((int.TryParse(snum, out num)));
+            if (!(int.TryParse(snum, out num)))
             {
-                MessageBox.Show("enter value");
+                return;
             }
-            else
+            try
             {
-                try
-                {
-                    stac.Push(Convert.ToInt32(textBox2.Text));
-                    listBox1.Items.Clear();
-                    int[] arr = stac.Value();
-                    Console.WriteLine(arr[0]);
-                    for (int i = arr.Length - 1; i >= 0; i--)
-                    {
-                        listBox1.Items.Add(arr[i]);
-                    }
-                    textBox2.Text = "";
-                    //listBox1.Items.Add("-");
+                stac.Push(num);
+                textBox2.Text = "";
+               
 
-                    //for (int i = listBox1.Items.Count - 1; i > 0; i--)
-                    //{
-                    //    listBox1.Items[i] = listBox1.Items[i - 1];
-                    //}
-                    //listBox1.Items[0] = stac.Peek();
-                    //textBox2.Text = "";
-
-
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    textBox2.Text = "";
-                    MessageBox.Show("stack is full");
-                }
             }
+            catch (IndexOutOfRangeException)
+            {
+                textBox2.Text = "";
+                MessageBox.Show("stack is full");
+            }
+            listBox1.Items.Clear();
+
+            int[] arr = stac.Value();
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                listBox1.Items.Add(arr[i]);
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
-                
-                
-
                 textBox3.Text = stac.Pop().ToString();
-                listBox1.Items.Clear();
 
-                int[] arr = stac.Value();
-                for (int i = arr.Length - 1; i >= 0; i--)
-                {
-                    listBox1.Items.Add(arr[i]);
-                }
-                
+               
                 //for (int i = 0; i < listBox1.Items.Count - 1; i++)
                 //{
                 //    listBox1.Items[i] = listBox1.Items[i + 1];
@@ -106,7 +98,15 @@ namespace task_Stack1
                 MessageBox.Show("stack is empty");
                 
             }
-  
+            listBox1.Items.Clear();
+
+            int[] arr = stac.Value();
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                listBox1.Items.Add(arr[i]);
+            }
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
