@@ -11,18 +11,16 @@ namespace task_Queue
         int ind_add = 0;
         int ind_remove = 0;
         int counter = 0;
-        int capacity;
         T[] data;
         
 
         public MyQueue(int capacity)
         {
-            this.capacity = capacity;
             data = new T[capacity];
         }
         public int Capacity
         {
-            get { return capacity; }
+            get { return data.Length; }
         }
         public int Count
         {
@@ -30,20 +28,23 @@ namespace task_Queue
         }
         internal void Enqueue(T item)
         {
-            if (counter == capacity) { throw new IndexOutOfRangeException();  }
+            if (counter == this.Capacity) 
+            {
+                throw new IndexOutOfRangeException(); 
+            }
             data[ind_add] = item;
             ind_add = (ind_add + 1) % data.Length;
 
-            //Console.WriteLine(ind_add);
             counter++;
         }
         internal T Decueue()
         {
-            if (counter == 0) { throw new IndexOutOfRangeException(); }
+            if (counter == 0) 
+            { 
+                throw new IndexOutOfRangeException(); 
+            }
             T item = data[ind_remove];
 
-            data[ind_remove] = default(T);
-            Console.WriteLine(data[ind_remove] + "R");
             ind_remove = (ind_remove + 1) % data.Length;
             counter--;
             return item;
@@ -54,7 +55,6 @@ namespace task_Queue
             T[] arr = new T[this.Count];
             if (ind_add  > ind_remove)
             {
-                Console.WriteLine(this.Count + "C");
                 for (int i = 0; i < this.Count; i++)
                 {
                     arr[i] =  data[ind_remove + i];
@@ -73,7 +73,6 @@ namespace task_Queue
                     catch (IndexOutOfRangeException) { return null; }
                 }
                 me++;
-                Console.WriteLine(me + "me");
                 for (int i = me; i < this.Count; i++)
                 {
                     arr[i] = data[i - me];
@@ -81,25 +80,29 @@ namespace task_Queue
             }
             return arr;
         }
-        internal bool IsEmpty()
+        internal bool IsEmpty
         {
-            if (counter == 0) { return true; }
-            return false; 
+            get
+            {
+                if (counter == 0)  return true;     
+                else return false;
+            }
+            
         }
 
         internal T First()
         {
-            if (!IsEmpty()) return data[ind_remove];
+            if (!this.IsEmpty) return data[ind_remove];
             throw new IndexOutOfRangeException(); 
         }
 
         internal T Last()
         {
-            Console.WriteLine(IsEmpty());
-            if (!IsEmpty())
+            
+            if (!this.IsEmpty)
             {
-                if (ind_add != 0) { return data[ind_add - 1]; }
-                else { return data[Count - 1]; }
+                if (ind_add != 0) return data[ind_add - 1]; 
+                else  return data[Count - 1]; 
             }
             throw new IndexOutOfRangeException();
         }

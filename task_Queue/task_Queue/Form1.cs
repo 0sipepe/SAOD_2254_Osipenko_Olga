@@ -24,8 +24,7 @@ namespace task_Queue
         private void btnCreate_Click(object sender, EventArgs e)
         {
             string scap = textBox1.Text;
-            int cap;
-            if (!(int.TryParse(scap, out cap)))
+            if (!(int.TryParse(scap, out int cap)))
             {
                 return;
             }
@@ -43,8 +42,7 @@ namespace task_Queue
         private void btnPush_Click(object sender, EventArgs e)
         {
             string snum = textBox2.Text;
-            int num;
-            if (!(int.TryParse(snum, out num))) return;
+            if (!(int.TryParse(snum, out int num))) return;
             
             try
             {
@@ -53,8 +51,7 @@ namespace task_Queue
             }
             catch (IndexOutOfRangeException)
             {
-                textBox2.Text = "";
-                 
+                textBox2.Text = "";           
             }
             lb.Items.Clear();
 
@@ -62,11 +59,7 @@ namespace task_Queue
             
             for (int i = 0; i < arr.Length; i++)
             {
-                //Console.WriteLine("_" + arr[i]);
-              
                 lb.Items.Add(arr[i]);
-                
-
             }
 
         }
@@ -91,17 +84,20 @@ namespace task_Queue
             
             for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine(arr[i] + "_");
-                
-                lb.Items.Add(arr[i]);
-                
+                lb.Items.Add(arr[i]); 
             }
         }
 
         private void btnPeek_Click(object sender, EventArgs e)
         {
-            try { textBox4.Text = queu.First().ToString(); }
-            catch (IndexOutOfRangeException) { MessageBox.Show("queue is empty"); }
+            try 
+            { 
+                textBox4.Text = queu.First().ToString(); 
+            }
+            catch (IndexOutOfRangeException) 
+            { 
+                MessageBox.Show("queue is empty"); 
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,17 +107,20 @@ namespace task_Queue
 
         private void btnIsEmpty_Click(object sender, EventArgs e)
         {
-            if (queu.IsEmpty()) { textBox5.Text = "пуст"; }
+            if (queu.IsEmpty)  textBox5.Text = "пуст"; 
             else textBox5.Text = "не пуст";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (lb.Visible == false) MessageBox.Show("queue is empty");
-            try { textBox6.Text = queu.Last().ToString(); }
-            catch (IndexOutOfRangeException) {
+            try 
+            { 
+                textBox6.Text = queu.Last().ToString(); 
+            }
+            catch (IndexOutOfRangeException) 
+            {
                 MessageBox.Show("queue is empty");
-
             }
         }
     }
