@@ -42,8 +42,11 @@ namespace task_Queue
         private void btnPush_Click(object sender, EventArgs e)
         {
             string snum = textBox2.Text;
-            if (!(int.TryParse(snum, out int num))) return;
-            
+            if (!(int.TryParse(snum, out int num)))
+            {
+                return;
+            }
+
             try
             {
                 queu.Enqueue(num);
@@ -56,19 +59,23 @@ namespace task_Queue
             lb.Items.Clear();
 
             int[] arr = queu.Values();
-            
+
+            Fill(arr);
+
+        }
+        private void Fill(int[] arr)
+        {
             for (int i = 0; i < arr.Length; i++)
             {
                 lb.Items.Add(arr[i]);
             }
-
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             try
             {
-                textBox3.Text = queu.Decueue().ToString();
+                textBox3.Text = queu.Dequeue().ToString();
             }
             catch (IndexOutOfRangeException)
             {
@@ -80,12 +87,8 @@ namespace task_Queue
             
 
             int[] arr = queu.Values();
-            if (arr == null) return;
-            
-            for (int i = 0; i < arr.Length; i++)
-            {
-                lb.Items.Add(arr[i]); 
-            }
+
+            Fill(arr);
         }
 
         private void btnPeek_Click(object sender, EventArgs e)
@@ -100,10 +103,7 @@ namespace task_Queue
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void btnIsEmpty_Click(object sender, EventArgs e)
         {
@@ -113,7 +113,10 @@ namespace task_Queue
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lb.Visible == false) MessageBox.Show("queue is empty");
+            if (lb.Visible == false)
+            {
+                MessageBox.Show("queue is empty");
+            }
             try 
             { 
                 textBox6.Text = queu.Last().ToString(); 

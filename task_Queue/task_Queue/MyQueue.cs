@@ -33,11 +33,11 @@ namespace task_Queue
                 throw new IndexOutOfRangeException(); 
             }
             data[ind_add] = item;
-            ind_add = (ind_add + 1) % data.Length;
+            ind_add = (ind_add + 1) % this.Capacity;
 
             counter++;
         }
-        internal T Decueue()
+        internal T Dequeue()
         {
             if (counter == 0) 
             { 
@@ -45,7 +45,7 @@ namespace task_Queue
             }
             T item = data[ind_remove];
 
-            ind_remove = (ind_remove + 1) % data.Length;
+            ind_remove = (ind_remove + 1) % this.Capacity;
             counter--;
             return item;
         }
@@ -53,31 +53,15 @@ namespace task_Queue
         internal T[] Values()
         {
             T[] arr = new T[this.Count];
-            if (ind_add  > ind_remove)
+            int ind = ind_remove;
+            for (int i = 0; i < this.Count; i++)
             {
-                for (int i = 0; i < this.Count; i++)
-                {
                     arr[i] =  data[ind_remove + i];
-                }
+                    ind = (ind_remove + 1) % this.Capacity;
+
             }
-            else
-            {
-                int me = 0;
-                for (int i = 0; i < this.Capacity - ind_remove; i++)
-                {
-                    try
-                    {
-                        arr[i] = data[i + ind_remove];
-                        me = i;
-                    }
-                    catch (IndexOutOfRangeException) { return null; }
-                }
-                me++;
-                for (int i = me; i < this.Count; i++)
-                {
-                    arr[i] = data[i - me];
-                }
-            }
+            
+            
             return arr;
         }
         internal bool IsEmpty
