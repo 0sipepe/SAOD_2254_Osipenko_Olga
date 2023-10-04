@@ -56,9 +56,8 @@ namespace task_Queue
             int ind = ind_remove;
             for (int i = 0; i < this.Count; i++)
             {
-                    arr[i] =  data[ind_remove + i];
-                    ind = (ind_remove + 1) % this.Capacity;
-
+                    arr[i] =  data[ind];
+                    ind = (ind + 1) % this.Capacity;
             }
             
             
