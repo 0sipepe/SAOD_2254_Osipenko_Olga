@@ -9,7 +9,7 @@ namespace task_Queue
 {
     public partial class Form1 : Form
     {
-        MyQueue<int> queu;
+        MyQueue<int> queue;
         public Form1()
         {
             InitializeComponent();
@@ -24,8 +24,8 @@ namespace task_Queue
                 return;
             }
 
-            queu = new MyQueue<int>(cap);
-            label2.Text = queu.Capacity.ToString();
+            queue = new MyQueue<int>(cap);
+            label2.Text = queue.Capacity.ToString();
             lb.Visible = true;
             textBox1.Text = "";
             textBox2.Text = "";
@@ -44,7 +44,7 @@ namespace task_Queue
 
             try
             {
-                queu.Enqueue(num);
+                queue.Enqueue(num);
                 textBox2.Text = "";
             }
             catch (IndexOutOfRangeException)
@@ -53,7 +53,7 @@ namespace task_Queue
             }
             lb.Items.Clear();
 
-            int[] arr = queu.Values();
+            int[] arr = queue.Values();
 
             Fill(arr);
 
@@ -70,7 +70,7 @@ namespace task_Queue
         {
             try
             {
-                textBox3.Text = queu.Dequeue().ToString();
+                textBox3.Text = queue.Dequeue().ToString();
             }
             catch (IndexOutOfRangeException)
             {
@@ -81,7 +81,7 @@ namespace task_Queue
             lb.Items.Clear();
             
 
-            int[] arr = queu.Values();
+            int[] arr = queue.Values();
 
             Fill(arr);
         }
@@ -90,7 +90,7 @@ namespace task_Queue
         {
             try 
             { 
-                textBox4.Text = queu.First().ToString(); 
+                textBox4.Text = queue.First().ToString(); 
             }
             catch (IndexOutOfRangeException) 
             { 
@@ -102,19 +102,25 @@ namespace task_Queue
 
         private void btnIsEmpty_Click(object sender, EventArgs e)
         {
-            if (queu.IsEmpty)  textBox5.Text = "пуст"; 
-            else textBox5.Text = "не пуст";
+            if (queue.IsEmpty)
+            {
+                textBox5.Text = "пуст";
+            }
+            else
+            {
+                textBox5.Text = "не пуст";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lb.Visible == false)
+            if (queue == null)
             {
                 MessageBox.Show("queue is empty");
             }
             try 
             { 
-                textBox6.Text = queu.Last().ToString(); 
+                textBox6.Text = queue.Last().ToString(); 
             }
             catch (IndexOutOfRangeException) 
             {
