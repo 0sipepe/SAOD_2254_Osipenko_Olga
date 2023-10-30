@@ -161,7 +161,7 @@ namespace task_Vector
             {
                 return;
             }
-            vector.ShtinkToFit();
+            vector.ShrinkToFit();
             label4.Text = vector.Capacity.ToString();
             label5.Text = vector.Size.ToString();
         }

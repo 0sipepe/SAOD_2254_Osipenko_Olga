@@ -158,9 +158,8 @@ namespace task_Vector
             data = array;
         
         }
-        internal void ShtinkToFit()
+        internal void ShrinkToFit()
         {
-
             T[] array = new T[this.Size];
             this.Capacity = this.Size;
             for (int i = 0; i < this.Size; i++)
