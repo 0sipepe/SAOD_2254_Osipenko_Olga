@@ -13,12 +13,9 @@ namespace task_Vector
         T[] data;
         int capacity = 0;
         int size = 0;
-        T defaultValue;
+        
 
-        public T DefaultValue
-        {
-            get { return defaultValue; }
-        }
+        
         public int Size
         {
             private set 
@@ -50,7 +47,6 @@ namespace task_Vector
             }
             this.Capacity = 1 + length * 2;
             this.Size = length;
-            this.defaultValue = defaultVal;
 
             data = new T[length];
             data = FillVector(Capacity, defaultVal, Size);
@@ -76,11 +72,11 @@ namespace task_Vector
         }
         internal void SetValue(int index, T value)
         {
-            if (((index - 1 > this.Size - 1) || (index - 1 < 0)))
+            if (((index  > this.Size - 1) || (index < 0)))
             {
                 throw new IndexOutOfRangeException();
             }
-            data[index - 1] = value;
+            data[index] = value;
         }
         internal void Add(T value)
         {
@@ -101,7 +97,7 @@ namespace task_Vector
             }
             if (newCap < this.Size)
             {
-                this.Capacity = this.Size;
+                return;
             }
             else
             {
@@ -134,7 +130,7 @@ namespace task_Vector
                     }
                     else
                     {
-                        array1[i] = DefaultValue;
+                        array1[i] = default;
                     }
                 }
                 array = array1;
@@ -151,7 +147,7 @@ namespace task_Vector
                     }
                     else
                     {
-                        array1[i] = DefaultValue;
+                        array1[i] = default;
                     }
                 }
                 array = array1;
@@ -176,11 +172,11 @@ namespace task_Vector
         {
             get
             {   
-                return data[index];
+                return At(index);
             }
             set
             {
-                data[index] = value;
+                SetValue(index, value);
             }
         }
 
