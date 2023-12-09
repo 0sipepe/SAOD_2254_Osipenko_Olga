@@ -20,6 +20,7 @@ namespace task_Vector
         {
             InitializeComponent();
             label1.Visible = false;
+            
         }
        
         private void btn_Create_Click(object sender, EventArgs e)
@@ -86,7 +87,6 @@ namespace task_Vector
             }
 
             FillListBox(vector);
-
             nud_AtInd.Value = 0;
         }
 

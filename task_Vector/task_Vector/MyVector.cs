@@ -68,11 +68,11 @@ namespace task_Vector
         }
         internal T At(int index)
         {
-            if (((index - 1 > this.Size - 1) || (index - 1 < 0)))
+            if (index > this.Size - 1 || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
-            return data[index - 1];
+            return data[index];
         }
         internal void SetValue(int index, T value)
         {
@@ -117,41 +117,45 @@ namespace task_Vector
 
         internal void Resize(int newSize)
         {
-            T[] array = new T[this.Capacity];
+            T[] array;
 
             if (newSize < 0)
             {
                 throw new IndexOutOfRangeException();
             }
-            else if (newSize < this.Capacity)
+            if (newSize < this.Capacity)
             {
+                T[] array1 = new T[this.Capacity];
                 for (int i = 0; i < newSize; i++)
                 {
                     if (i < this.Size)
                     {
-                        array[i] = data[i];
+                        array1[i] = data[i];
                     }
                     else
                     {
-                        array[i] = DefaultValue;
+                        array1[i] = DefaultValue;
                     }
                 }
+                array = array1;
             }
             else
             {
                 this.Reserve(newSize * 2);
-
+                T[] array1 = new T[this.Capacity];
                 for (int i = 0; i < newSize; i++)
                 {
                     if (i < this.Size)
                     {
-                        array[i] = data[i];
+                        array1[i] = data[i];
                     }
                     else
                     {
-                        array[i] = DefaultValue;
+                        array1[i] = DefaultValue;
                     }
                 }
+                array = array1;
+                
             }
 
             this.Size = newSize;
@@ -171,7 +175,7 @@ namespace task_Vector
         public T this[int index]
         {
             get
-            {
+            {   
                 return data[index];
             }
             set
