@@ -60,7 +60,7 @@ namespace task_List
         }
         public void Insert(int index, T val)
         {
-            if ((index <= Size) && (index >= 0))
+            if (index < Size && index > 0)
             {
                 MyListNode tmp = First;
                 for (int i = 0; i < index - 1; i++)
@@ -71,6 +71,14 @@ namespace task_List
                 tmp.Next.Prev = node;
                 tmp.Next = node;
                 Size++;
+            }
+            else if (index == 0)
+            {
+                Prepend(val);
+            }
+            else if (index == Size)
+            {
+                Append(val);
             }
             else
             {
@@ -265,42 +273,50 @@ namespace task_List
         }
         public IEnumerator GetEnumerator()
         {
-            return new MyListEnum(First, Size);
+            return new MyListEnum(First);
         } 
         class MyListEnum : IEnumerator
         {
-            int index = -1;
             MyListNode node;
-            int size;
-            public MyListEnum(MyListNode n, int s)
+            MyListNode first;
+            bool flag;
+
+            public MyListEnum(MyListNode n)
             {
                 node = n;
-                size = s;
+                first = n;
+                flag = true;
             }
             public bool MoveNext()
             {
-                if (index + 1 < size)
+
+                if (node == null)
+                    return false;
+
+                if (flag)
                 {
-                    index++;
+                    flag = false;
                     return true;
                 }
-                return false;
+
+                if (node.Next == null)
+                    return false;
+
+                node = node.Next;
+                return true;
+
             }
             public void Reset()
             {
-                index = -1;
+                flag = true;
+                node = first;
                 
             }
             public object Current
             {
                 get 
                 {
-                    MyListNode tmp = node;
-                    for (int i = 0; i <= index-1; i++)
-                    {
-                        tmp = tmp.Next;
-                    }
-                    return tmp.Value;
+                    return node.Value;
                 }
             }
         }
