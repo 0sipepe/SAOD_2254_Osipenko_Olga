@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_Queue
 {
-    internal class MyQueue<T>
+    public class MyQueue<T>
     {
         int ind_add = 0;
         int ind_remove = 0;
@@ -26,7 +26,7 @@ namespace task_Queue
         {
             get { return counter; }
         }
-        internal void Enqueue(T item)
+        public void Enqueue(T item)
         {
             if (counter == this.Capacity) 
             {
@@ -37,7 +37,7 @@ namespace task_Queue
 
             counter++;
         }
-        internal T Dequeue()
+        public T Dequeue()
         {
             if (counter == 0) 
             { 
