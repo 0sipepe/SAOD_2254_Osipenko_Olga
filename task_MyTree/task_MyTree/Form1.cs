@@ -100,7 +100,7 @@ namespace task_MyTree
                 Console.WriteLine();
                 foreach (var val in tree.ToList())
                 {
-                    tb_ToList.Text += val.ToString();
+                    tb_ToList.Text += val.ToString() + " ";
                 }
             }
            

@@ -239,7 +239,7 @@ namespace task_MyTree
             root = null;
         }
 
-        public MyDictNode<TKey, TValue> FindByKey(TKey key, MyDictNode<TKey, TValue> r)
+        private MyDictNode<TKey, TValue> FindByKey(TKey key, MyDictNode<TKey, TValue> r)
         {
             if (r == null) return null;
 
@@ -251,7 +251,7 @@ namespace task_MyTree
             return FindByKey(key, r.Right);
 
         }
-        public MyDictNode<TKey, TValue> FindByValue(TValue value, MyDictNode<TKey, TValue> r)
+        private MyDictNode<TKey, TValue> FindByValue(TValue value, MyDictNode<TKey, TValue> r)
         {
             if (r == null) return null;
             if (r.Pair.Value.Equals(value)) return r;
