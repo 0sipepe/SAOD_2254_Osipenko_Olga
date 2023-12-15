@@ -61,22 +61,16 @@
             this.btn_RemoveDict = new System.Windows.Forms.Button();
             this.btn_AddDict = new System.Windows.Forms.Button();
             this.tb_AddValue = new System.Windows.Forms.TextBox();
-            this.tb_FindByValue = new System.Windows.Forms.TextBox();
-            this.tb_FindByKey = new System.Windows.Forms.TextBox();
-            this.nud_FindByValue = new System.Windows.Forms.NumericUpDown();
-            this.btn_FindByValue = new System.Windows.Forms.Button();
-            this.nud_FindByKey = new System.Windows.Forms.NumericUpDown();
-            this.btn_FindByKey = new System.Windows.Forms.Button();
             this.tb_ContainsValue = new System.Windows.Forms.TextBox();
             this.btn_ContainsValue = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Remove)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Add)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Contains)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ContainsKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_AddKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_RemoveKey)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_FindByValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_FindByKey)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Add
@@ -358,54 +352,6 @@
             this.tb_AddValue.Size = new System.Drawing.Size(66, 22);
             this.tb_AddValue.TabIndex = 36;
             // 
-            // tb_FindByValue
-            // 
-            this.tb_FindByValue.Location = new System.Drawing.Point(571, 395);
-            this.tb_FindByValue.Name = "tb_FindByValue";
-            this.tb_FindByValue.Size = new System.Drawing.Size(66, 22);
-            this.tb_FindByValue.TabIndex = 47;
-            // 
-            // tb_FindByKey
-            // 
-            this.tb_FindByKey.Location = new System.Drawing.Point(571, 366);
-            this.tb_FindByKey.Name = "tb_FindByKey";
-            this.tb_FindByKey.Size = new System.Drawing.Size(66, 22);
-            this.tb_FindByKey.TabIndex = 46;
-            // 
-            // nud_FindByValue
-            // 
-            this.nud_FindByValue.Location = new System.Drawing.Point(484, 395);
-            this.nud_FindByValue.Name = "nud_FindByValue";
-            this.nud_FindByValue.Size = new System.Drawing.Size(81, 22);
-            this.nud_FindByValue.TabIndex = 44;
-            // 
-            // btn_FindByValue
-            // 
-            this.btn_FindByValue.Location = new System.Drawing.Point(393, 397);
-            this.btn_FindByValue.Name = "btn_FindByValue";
-            this.btn_FindByValue.Size = new System.Drawing.Size(85, 22);
-            this.btn_FindByValue.TabIndex = 43;
-            this.btn_FindByValue.Text = "по знач";
-            this.btn_FindByValue.UseVisualStyleBackColor = true;
-            this.btn_FindByValue.Click += new System.EventHandler(this.btn_FindByValue_Click);
-            // 
-            // nud_FindByKey
-            // 
-            this.nud_FindByKey.Location = new System.Drawing.Point(484, 367);
-            this.nud_FindByKey.Name = "nud_FindByKey";
-            this.nud_FindByKey.Size = new System.Drawing.Size(81, 22);
-            this.nud_FindByKey.TabIndex = 41;
-            // 
-            // btn_FindByKey
-            // 
-            this.btn_FindByKey.Location = new System.Drawing.Point(393, 360);
-            this.btn_FindByKey.Name = "btn_FindByKey";
-            this.btn_FindByKey.Size = new System.Drawing.Size(85, 29);
-            this.btn_FindByKey.TabIndex = 40;
-            this.btn_FindByKey.Text = "по ключу";
-            this.btn_FindByKey.UseVisualStyleBackColor = true;
-            this.btn_FindByKey.Click += new System.EventHandler(this.btn_FindByKey_Click);
-            // 
             // tb_ContainsValue
             // 
             this.tb_ContainsValue.Location = new System.Drawing.Point(484, 134);
@@ -423,19 +369,31 @@
             this.btn_ContainsValue.UseVisualStyleBackColor = true;
             this.btn_ContainsValue.Click += new System.EventHandler(this.btn_ContainsValue_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(484, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 16);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "key";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(571, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "value";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 459);
+            this.ClientSize = new System.Drawing.Size(690, 362);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_ContainsValue);
             this.Controls.Add(this.btn_ContainsValue);
-            this.Controls.Add(this.tb_FindByValue);
-            this.Controls.Add(this.tb_FindByKey);
-            this.Controls.Add(this.nud_FindByValue);
-            this.Controls.Add(this.btn_FindByValue);
-            this.Controls.Add(this.nud_FindByKey);
-            this.Controls.Add(this.btn_FindByKey);
             this.Controls.Add(this.tb_AddValue);
             this.Controls.Add(this.nud_ContainsKey);
             this.Controls.Add(this.btn_ContainsKey);
@@ -477,8 +435,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_ContainsKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_AddKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_RemoveKey)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_FindByValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_FindByKey)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,14 +474,10 @@
         private System.Windows.Forms.Button btn_RemoveDict;
         private System.Windows.Forms.Button btn_AddDict;
         private System.Windows.Forms.TextBox tb_AddValue;
-        private System.Windows.Forms.TextBox tb_FindByValue;
-        private System.Windows.Forms.TextBox tb_FindByKey;
-        private System.Windows.Forms.NumericUpDown nud_FindByValue;
-        private System.Windows.Forms.Button btn_FindByValue;
-        private System.Windows.Forms.NumericUpDown nud_FindByKey;
-        private System.Windows.Forms.Button btn_FindByKey;
         private System.Windows.Forms.TextBox tb_ContainsValue;
         private System.Windows.Forms.Button btn_ContainsValue;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
