@@ -249,31 +249,6 @@ namespace task_MyTree
             }
         }
 
-        private void btn_FindByKey_Click(object sender, EventArgs e)
-        {                                                                               //не забыть убрать паблик
-            if (dict == null) return;
-            if(dict.FindByKey(Convert.ToInt32(nud_FindByKey.Value), dict.root) != null)
-            {
-                tb_FindByKey.Text = dict.FindByKey(Convert.ToInt32(nud_FindByKey.Value), dict.root).Pair.Value;
-            }           
-            else
-            {
-                MessageBox.Show("No such key");
-            }
-        }
-
-        private void btn_FindByValue_Click(object sender, EventArgs e)
-        {
-            if (dict == null) return;
-            if (dict.FindByValue(tb_FindByValue.Text, dict.root) != null)
-            {
-                nud_FindByValue.Value = dict.FindByValue(tb_FindByValue.Text, dict.root).Pair.Key;
-            }
-            else
-            {
-                MessageBox.Show("No such value");
-            }
-            
-        }
+        
     }
 }

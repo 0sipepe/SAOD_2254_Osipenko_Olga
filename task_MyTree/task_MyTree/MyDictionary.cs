@@ -10,8 +10,8 @@ namespace task_MyTree
     internal class MyDictionary<TKey, TValue> : IEnumerable where  TKey: IComparable
     {
         int count = 0;
-        public MyDictNode<TKey, TValue> root;
-        //public static List<MyTreeNode<T>> nods = new List<MyTreeNode<T>>();
+        MyDictNode<TKey, TValue> root;
+        
 
         public void Add(TKey key, TValue val)
         {
@@ -22,7 +22,7 @@ namespace task_MyTree
                 this.Add(node, root);
 
             count++;
-            //nods.Add(node);
+            
         }
         private void Add(MyDictNode<TKey, TValue> n, MyDictNode<TKey, TValue> r)
         {
@@ -223,7 +223,7 @@ namespace task_MyTree
                     }
 
                 }
-                //nods.Remove(node);
+                
                 count--;
             }
             else
@@ -239,7 +239,7 @@ namespace task_MyTree
             root = null;
         }
 
-        internal MyDictNode<TKey, TValue> FindByKey(TKey key, MyDictNode<TKey, TValue> r)
+        public MyDictNode<TKey, TValue> FindByKey(TKey key, MyDictNode<TKey, TValue> r)
         {
             if (r == null) return null;
 
@@ -251,7 +251,7 @@ namespace task_MyTree
             return FindByKey(key, r.Right);
 
         }
-        internal MyDictNode<TKey, TValue> FindByValue(TValue value, MyDictNode<TKey, TValue> r)
+        public MyDictNode<TKey, TValue> FindByValue(TValue value, MyDictNode<TKey, TValue> r)
         {
             if (r == null) return null;
             if (r.Pair.Value.Equals(value)) return r;
@@ -418,7 +418,7 @@ namespace task_MyTree
         {
             return new MyDictEnum(this.ToList(root));
         }
-        public class MyDictNode<TKey, TValue> where TKey : IComparable
+        private class MyDictNode<TKey, TValue> where TKey : IComparable
         {
             MyDictNode<TKey, TValue> parent;
             MyDictNode<TKey, TValue> left;
