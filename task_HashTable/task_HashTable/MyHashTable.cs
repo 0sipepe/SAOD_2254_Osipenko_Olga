@@ -10,13 +10,13 @@ namespace task_HashTable
 {
     internal class MyHashTable<TKey, TValue> : IEnumerable
     {
-        List<LinkedList<KeyValuePair<TKey, TValue>>> data = new List<LinkedList<KeyValuePair<TKey, TValue>>>(100);
+        List<LinkedList<KeyValuePair<TKey, TValue>>> data = new List<LinkedList<KeyValuePair<TKey, TValue>>>(10);
         int countElem = 0;
         int count;
 
         public MyHashTable()
         {
-            for(int i = 0; i < 100; i++)
+            for(int i = 0; i < 10; i++)
             {
                 data.Add(new LinkedList<KeyValuePair<TKey, TValue>>());
             }
@@ -82,6 +82,7 @@ namespace task_HashTable
         public void Clear()
         {
             data.Clear();
+            countElem++;
         }
         public TValue ValueByKey(TKey key)
         {
@@ -201,12 +202,31 @@ namespace task_HashTable
                         pairIndex++;
                         return true;
                     }
-                    while (data[listIndex].Count == 0)
+                    if (data[listIndex].Count == 0)
                     {
-                        pairIndex = 0;
+                        while (data[listIndex].Count == 0)
+                        {
+                            pairIndex = 0;
+                            listIndex++;
+                        }
+                    }
+                    else
+                    {
+                        int countNotZero = 0;
+                        int tmp = listIndex + 1;
+                        while(tmp != data.Count)
+                        {
+                            if (data[tmp].Count != 0) countNotZero++;
+                            tmp++;
+                        }
+                        if (countNotZero == 0)
+                        {
+                            return false;
+                        }
+                        
                         listIndex++;
                     }
-                    
+                        
                     return true;
                 }
                 return false;
